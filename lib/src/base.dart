@@ -29,7 +29,7 @@ class FlutterWebviewPlugin {
     _channel.setMethodCallHandler(_handleMessages);
   }
 
-  static Map<String, FlutterWebviewPlugin> _instance;
+  static Map<String, FlutterWebviewPlugin> _instance = {};
 
   final MethodChannel _channel;
 
