@@ -11,6 +11,7 @@ class WebviewScaffold extends StatefulWidget {
   const WebviewScaffold({
     Key key,
     this.appBar,
+    @required this.id,
     @required this.url,
     this.headers,
     this.javascriptChannels,
@@ -46,6 +47,7 @@ class WebviewScaffold extends StatefulWidget {
   }) : super(key: key);
 
   final PreferredSizeWidget appBar;
+  final String id;
   final String url;
   final Map<String, String> headers;
   final Set<JavascriptChannel> javascriptChannels;
@@ -84,7 +86,7 @@ class WebviewScaffold extends StatefulWidget {
 }
 
 class _WebviewScaffoldState extends State<WebviewScaffold> {
-  final webviewReference = FlutterWebviewPlugin();
+  final webviewReference = FlutterWebviewPlugin(widget.id);
   Rect _rect;
   Timer _resizeTimer;
   StreamSubscription<WebViewStateChanged> _onStateChanged;

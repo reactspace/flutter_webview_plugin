@@ -16,12 +16,12 @@ enum WebViewState { shouldStart, startLoad, finishLoad, abortLoad }
 
 /// Singleton class that communicate with a Webview Instance
 class FlutterWebviewPlugin {
-  factory FlutterWebviewPlugin() {
-    if(_instance == null) {
+  factory FlutterWebviewPlugin(String id) {
+    if(_instance[id] == null) {
       const MethodChannel methodChannel = const MethodChannel(_kChannel);
-      _instance = FlutterWebviewPlugin.private(methodChannel);
+      _instance[id] = FlutterWebviewPlugin.private(methodChannel);
     }
-    return _instance;
+    return _instance[id];
   }
 
   @visibleForTesting
@@ -29,7 +29,7 @@ class FlutterWebviewPlugin {
     _channel.setMethodCallHandler(_handleMessages);
   }
 
-  static FlutterWebviewPlugin _instance;
+  static Map<String, FlutterWebviewPlugin> _instance;
 
   final MethodChannel _channel;
 
