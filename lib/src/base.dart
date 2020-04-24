@@ -18,7 +18,7 @@ enum WebViewState { shouldStart, startLoad, finishLoad, abortLoad }
 class FlutterWebviewPlugin {
   factory FlutterWebviewPlugin(String id) {
     if(_instance == null || _instance[id] == null) {
-      const MethodChannel methodChannel = const MethodChannel(_kChannel);
+      const MethodChannel methodChannel = const MethodChannel(id);
       _instance[id] = FlutterWebviewPlugin.private(methodChannel);
     }
     return _instance[id];
