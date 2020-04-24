@@ -86,7 +86,7 @@ class WebviewScaffold extends StatefulWidget {
 }
 
 class _WebviewScaffoldState extends State<WebviewScaffold> {
-  final webviewReference = FlutterWebviewPlugin(widget.id);
+  var webviewReference;
   Rect _rect;
   Timer _resizeTimer;
   StreamSubscription<WebViewStateChanged> _onStateChanged;
@@ -96,6 +96,7 @@ class _WebviewScaffoldState extends State<WebviewScaffold> {
   @override
   void initState() {
     super.initState();
+    webviewReference = FlutterWebviewPlugin(widget.id);
     webviewReference.close();
 
     _onBack = webviewReference.onBack.listen((_) async {
